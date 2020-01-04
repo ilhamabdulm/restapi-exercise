@@ -27,3 +27,10 @@ ROUTING
 ------------------------
 This application has been tested on POSTMAN application.
 You can use '//localhost:4000' to run this app
+
+------------------------
+ADDING CLIENT SIDE
+------------------------
+1. You can ADD new contact by client side
+2. You can DELETE contact by client side
+3. EDIT feature still has error
