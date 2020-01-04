@@ -20,6 +20,7 @@ ROUTING
 ------------------------
 |   Route       |   Method    |     Function     
 | /contacts     |    GET      | Show all contact Data
+| /contacts/:id |    GET      | Show one contact Data by ID
 | /contacts     |    POST     | Add new data to database
 | /contacts/:id |    PUT      | Update data by ID
 | /contacts/:id |    DELETE   | Delete data by ID
