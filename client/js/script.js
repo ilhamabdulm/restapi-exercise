@@ -7,7 +7,7 @@ $('#myModal').modal();
 let editID = null
 
 // Fetch data from local API
-
+let totalData = null
 $.ajax({
     url: 'http://localhost:4000/contacts', // this app use port 4000
     type: 'get',
@@ -26,7 +26,9 @@ $.ajax({
                     </td>
                 </tr>`
             )
+            totalData = i+1
         })
+        $('#total-data').html(`Total data = ${totalData}`)
     }
 })
 
