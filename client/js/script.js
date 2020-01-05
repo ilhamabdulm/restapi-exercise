@@ -21,8 +21,8 @@ $.ajax({
                     <td> ${data.phone} </td>
                     <td> ${data.email} </td>
                     <td> ${data.address} </td>
-                    <td> <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addContactModal onClick='editContact(${data.id})">Edit</button> | 
-                        <button type="button" class="btn btn-danger id="delete-data" onClick='deleteContact(${data.id})'>Delete</button>
+                    <td> <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addContactModal" id="edit-data" onClick="editContact(${data.id})">Edit</button> | 
+                        <button type="button" class="btn btn-danger" id="delete-data" onClick="deleteContact(${data.id})">Delete</button>
                     </td>
                 </tr>`
             )
@@ -50,9 +50,9 @@ $('#save-btn').on('click', () => {
         },
         success: ()=>{
             console.log('Data added')
+            refresh()
         }
     })
-    refresh()
 })
 
 // Delete data
@@ -70,12 +70,36 @@ function deleteContact(id){
 
 // Edit data
 function editContact(id){
+    editID = id
     $.ajax({
         url: 'http://localhost:4000/contacts/'+id, // this app use port 4000
         type: 'get',
         dataType: 'json',
         success: (result) => {
             console.log(result)
+            $('#modal-title').html('Edit Data')
+            $('#name').val(result.name),
+            $('#phone').val(result.phone),
+            $('#email').val(result.email),
+            $('#address').val(result.address)
         }
     })
 }
+
+$('#edit-btn').on('click', () => {
+    $.ajax({
+        url: 'http://localhost:4000/contacts/'+editID, // this app use port 4000
+        type: 'put',
+        dataType: 'json',
+        data: {
+            name: $('#name').val(),
+            phone: $('#phone').val(),
+            email: $('#email').val(),
+            address: $('#address').val()
+        },
+        success: ()=>{
+            console.log('Data edited')
+            refresh()
+        }
+    })
+})
