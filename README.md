@@ -34,4 +34,4 @@ ADDING CLIENT SIDE
 ------------------------
 1. You can ADD new contact by client side
 2. You can DELETE contact by client side
-3. EDIT feature still has error
+3. You can EDIT contact by client side
